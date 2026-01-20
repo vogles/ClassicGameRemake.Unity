@@ -29,7 +29,7 @@ public class Paddle : MonoBehaviour
     {
         if (_rigidbody != null)
         {
-            _rigidbody.velocity = _direction * _speed;
+            _rigidbody.linearVelocity = _direction * _speed;
         }
     }
 }

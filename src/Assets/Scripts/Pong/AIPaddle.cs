@@ -8,7 +8,7 @@ public class AIPaddle : Paddle
 
     protected override void Awake()
     {
-        _ball = FindObjectOfType<Ball>();
+        _ball = Object.FindAnyObjectByType<Ball>();
 
         base.Awake();
     }

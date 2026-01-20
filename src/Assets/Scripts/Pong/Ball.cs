@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private float _speed = 2f;
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _speedIncrement = 0.05f;
-    [SerializeField] private float _contactDistance = 0.05f;
+    //[SerializeField] private float _contactDistance = 0.05f;
     [SerializeField] private ContactFilter2D _contactFilter;
 
     private Rigidbody2D _rigidbody;
@@ -54,11 +54,11 @@ public class Ball : MonoBehaviour
                 {
                     if (hitResult.collider.name == "LeftBoundary")
                     {
-                        FindObjectOfType<GameController>().ChangeState(GameController.GameState.LeftWon);
+                        Object.FindAnyObjectByType<GameController>().ChangeState(GameController.GameState.LeftWon);
                     }
                     else
                     {
-                        FindObjectOfType<GameController>().ChangeState(GameController.GameState.RightWon);
+                        Object.FindAnyObjectByType<GameController>().ChangeState(GameController.GameState.RightWon);
                     }
                 }
             }
@@ -70,7 +70,6 @@ public class Ball : MonoBehaviour
     public void ReflectY()
     {
         _direction.y *= -1;
-
     }
 
     public void ReflectX()
