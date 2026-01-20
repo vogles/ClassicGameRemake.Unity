@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace ClassicGames.Pong
@@ -10,9 +6,11 @@ namespace ClassicGames.Pong
     public class PlayerPaddle : Paddle
     {
         private PlayerControls _playerControls;
+        private GameController _gameController = null;
 
         protected override void Awake()
         {
+            _gameController = Object.FindAnyObjectByType<GameController>();
             _playerControls = new PlayerControls();
 
             base.Awake();
@@ -25,6 +23,7 @@ namespace ClassicGames.Pong
                 _playerControls.Enable();
                 _playerControls.PongGameplay.Move.canceled += OnMoveCancelled;
                 _playerControls.PongGameplay.Move.performed += OnMove;
+                _playerControls.PongGameplay.StartGame.performed += OnStartGame;
             }
         }
 
@@ -41,6 +40,7 @@ namespace ClassicGames.Pong
         private void OnMove(InputAction.CallbackContext context)
         {
             var moveDirection = context.ReadValue<Vector2>();
+            moveDirection.x = 0;
             Direction = moveDirection;
         }
 
@@ -49,6 +49,13 @@ namespace ClassicGames.Pong
             Direction = Vector2.zero;
         }
 
+        private void OnStartGame(InputAction.CallbackContext context)
+        {
+            if (_gameController != null)
+            {
+                _gameController.ChangeState(GameController.GameState.Playing);
+            }
+        }
     }
 }
 

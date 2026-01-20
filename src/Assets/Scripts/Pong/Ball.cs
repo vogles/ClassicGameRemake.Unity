@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private Vector2 _direction = Vector2.zero;
+    private GameController _gameController = null;
 
     public Vector2 Direction 
     {
@@ -28,6 +29,7 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _gameController = Object.FindAnyObjectByType<GameController>();
     }
 
     private void FixedUpdate()
@@ -36,7 +38,6 @@ public class Ball : MonoBehaviour
         List<RaycastHit2D> hitResults = new List<RaycastHit2D>();
         int hitCount = _rigidbody.Cast(_direction, _contactFilter, hitResults, amountToMoveBy);
 
-        Debug.Log("hitCount: " + hitCount);
         if (hitCount > 0)
         {
             foreach (var hitResult in hitResults)
@@ -54,11 +55,11 @@ public class Ball : MonoBehaviour
                 {
                     if (hitResult.collider.name == "LeftBoundary")
                     {
-                        Object.FindAnyObjectByType<GameController>().ChangeState(GameController.GameState.LeftWon);
+                        _gameController.ChangeState(GameController.GameState.LeftWon);
                     }
                     else
                     {
-                        Object.FindAnyObjectByType<GameController>().ChangeState(GameController.GameState.RightWon);
+                        _gameController.ChangeState(GameController.GameState.RightWon);
                     }
                 }
             }

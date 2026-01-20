@@ -18,7 +18,7 @@ public class AIPaddle : Paddle
         if (_ball != null)
         {
             var direction = Direction;
-            direction.y = _ball.Position.y < Position.y ? -1 : 1;
+            direction.y = _ball.Direction.y;
             Direction = direction;
         }
     }
