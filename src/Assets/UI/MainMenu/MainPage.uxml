@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="root" style="flex-grow: 1; align-items: center;">
         <ui:VisualElement name="MainMenu" style="flex-grow: 1; align-items: center; align-content: auto; justify-content: center; width: 50%; height: 50%; align-self: auto;">
-            <ui:Button text="Pong&#10;" name="Pong"/>
+            <ui:Button text="Pong&#10;" name="startPongGame"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
