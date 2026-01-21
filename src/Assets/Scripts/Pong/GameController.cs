@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
@@ -13,18 +14,42 @@ public class GameController : MonoBehaviour
     }
 
     [SerializeField] private Ball _ball;
+    [SerializeField] private GameObject _pauseMenuPrefab;
 
     private GameState _state;
     private int _player1Score = 0;
     private int _player2Score = 0;
+    private PlayerControls _playerControls;
 
     public int Player1Score => _player1Score;
     public int Player2Score => _player2Score;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         ChangeState(GameState.Idle);
+     
+        _playerControls = new PlayerControls();
+    }
+
+    private void OnEnable()
+    {
+        if (_playerControls != null)
+        {
+            _playerControls.Enable();
+            _playerControls.PongGameplay.StartGame.performed += OnStartGame;
+            _playerControls.PongGameplay.Pause.performed += OnPauseGame;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_playerControls != null)
+        {
+            _playerControls.PongGameplay.StartGame.performed -= OnStartGame;
+            _playerControls.PongGameplay.Pause.performed -= OnPauseGame;
+            _playerControls.Disable();
+        }
     }
 
     public void ChangeState(GameState state)
@@ -58,5 +83,19 @@ public class GameController : MonoBehaviour
         }
 
         _state = state;
+    }
+
+    private void OnStartGame(InputAction.CallbackContext context)
+    {
+        ChangeState(GameController.GameState.Playing);
+    }
+
+    private void OnPauseGame(InputAction.CallbackContext context)
+    {
+        if (_pauseMenuPrefab != null)
+        {
+            var pauseMenu = Instantiate(_pauseMenuPrefab);
+            Time.timeScale = 0f;
+        }
     }
 }
