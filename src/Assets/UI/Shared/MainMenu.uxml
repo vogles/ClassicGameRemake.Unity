@@ -1,7 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="root" style="flex-grow: 1; align-items: center;">
-        <ui:VisualElement name="MainMenu" style="flex-grow: 1; align-items: center; align-content: auto; justify-content: center; width: 50%; height: 50%; align-self: auto;">
-            <ui:Button text="Pong&#10;" name="startPongGame"/>
+    <Style src="project://database/Assets/UI/Shared/shared.uss?fileID=7433441132597879392&amp;guid=cc79578e873b50a49b98a1fb020fcda3&amp;type=3#shared"/>
+    <ui:VisualElement name="root" style="flex-grow: 1; align-items: center; background-image: url(&quot;project://database/Assets/Art/UI/backgroundCastles.png?fileID=3768259329106172513&amp;guid=37112f2e88c3fd442ac9de3ee8e2d25d&amp;type=3#backgroundCastles_0&quot;); justify-content: center;">
+        <ui:VisualElement name="MainMenu" style="align-items: center; width: 50%; height: 50%; padding-top: 5px; padding-bottom: 5px;">
+            <ui:Label text="Classic 2D remakes" class="title"/>
+            <ui:Button text="Pong&#10;" name="startPongGame" class="button"/>
+            <ui:Button text="Doodle Jump" name="startDoodleJumpGame" class="button"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
