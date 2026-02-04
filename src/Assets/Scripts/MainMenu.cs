@@ -34,6 +34,6 @@ public class MainMenu : MonoBehaviour
 
     private void OnDoodleJump()
     {
-        SceneManager.LoadScene("DoodleJump", LoadSceneMode.Single);
+        SceneManager.LoadScene("Breakout", LoadSceneMode.Single);
     }
 }

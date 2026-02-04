@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Pong.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/DoodleJump.unity
+    path: Assets/Scenes/Breakout.unity
     guid: b3ecb2243d1eb17488e32bc3b6d2bbc2
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
