@@ -1,10 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Pong/PongHUD.uss?fileID=7433441132597879392&amp;guid=0b3e445c060c74546960ea1f99741068&amp;type=3#PongHUD"/>
     <ui:VisualElement name="root" style="flex-grow: 1;">
-        <ui:VisualElement name="scores" style="width: 100%; flex-direction: row; align-items: center; justify-content: space-between;">
+        <ui:Image name="divider" style="height: 100%; width: 2px; background-color: rgb(255, 255, 255); align-items: auto; align-self: center; position: absolute;"/>
+        <ui:VisualElement name="scores" style="flex-direction: row; justify-content: center;">
             <ui:Label text="0" name="player1Score" class="score"/>
             <ui:Label text="0" name="player2Score" enable-rich-text="true" class="score"/>
         </ui:VisualElement>
-        <ui:Image name="divider" style="height: 2px; width: 100%; background-color: rgb(255, 255, 255);"/>
     </ui:VisualElement>
 </ui:UXML>

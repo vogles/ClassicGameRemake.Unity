@@ -5,7 +5,7 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
     private Vector2 _direction = Vector2.zero;
-        public float _speed = 2.0f;
+    public float _speed = 2.0f;
     private Rigidbody2D _rigidbody;
 
     public Vector2 Direction
@@ -29,6 +29,7 @@ public class Paddle : MonoBehaviour
     {
         if (_rigidbody != null)
         {
+            //_rigidbody.MovePosition(Position + (_direction * _speed * Time.deltaTime));
             _rigidbody.linearVelocity = _direction * _speed;
         }
     }

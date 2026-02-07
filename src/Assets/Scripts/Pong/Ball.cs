@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
                 var hitResultTag = hitResult.collider.tag;
                 if (hitResultTag == "Environment")
                 {
-                    ReflectY();
+                    //ReflectY();
                 }
                 else if (hitResultTag == "Player")
                 {
@@ -78,5 +78,16 @@ public class Ball : MonoBehaviour
         _direction.x *= -1;
 
         _speed = Mathf.Min(_speed + _speedIncrement, _maxSpeed);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var collider = collision.collider;
+        var reflector = collider.GetComponent<Wall>();
+
+        if (reflector != null)
+        {
+            reflector.HandleBallCollision(this);
+        }
     }
 }
